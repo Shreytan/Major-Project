@@ -14,6 +14,7 @@ export interface DataSet {
   rating: number
   earnings?: number; // or the correct type
   downloads: number
+  status : string
   views: number
   seller: string
   createdAt: string
