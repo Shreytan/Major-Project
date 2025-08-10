@@ -12,6 +12,7 @@ export interface DataSet {
   price: number
   category: string
   rating: number
+  earnings?: number; // or the correct type
   downloads: number
   views: number
   seller: string
