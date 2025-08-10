@@ -6,19 +6,21 @@ export interface WalletState {
 }
 
 export interface DataSet {
-  id: string
-  title: string
-  description: string
-  price: number
-  downloads: number
-  earnings?: number
-  status: string
-  category?: string
-  rating?: number
-  views?: number
-  seller?: string
-  createdAt?: string
-  updatedAt?: string
+  id: string;
+  title: string;
+  description: string;
+  price: number;
+  downloads: number;
+  earnings?: number;
+  status: string;
+  category?: string;
+  rating?: number;
+  views?: number;
+  seller?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  tags?: string[];
+  fileSize?: string;
 }
 
 export interface Transaction {
