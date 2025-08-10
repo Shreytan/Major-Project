@@ -13,27 +13,11 @@ import {
   Settings
 } from 'lucide-react'
 import { walletManager, WalletState } from '@/lib/wallet'
+import { Transaction, DataSet } from '@/types'
+import TransactionHistory from '@/components/TransactionHistory'
 import toast from 'react-hot-toast'
 
-interface Transaction {
-  id: string
-  type: 'purchase' | 'sale'
-  dataSetTitle: string
-  amount: number
-  date: string
-  status: 'completed' | 'pending' | 'failed'
-  counterparty: string
-}
 
-interface DataSet {
-  id: string
-  title: string
-  description: string
-  price: number
-  downloads: number
-  earnings: number
-  status: 'active' | 'inactive'
-}
 
 const mockTransactions: Transaction[] = [
   {
@@ -43,7 +27,8 @@ const mockTransactions: Transaction[] = [
     amount: 0.5,
     date: '2024-01-15',
     status: 'completed',
-    counterparty: '0x1234...5678'
+    counterparty: '0x1234...5678',
+    txHash: '0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef'
   },
   {
     id: '2',
@@ -52,7 +37,8 @@ const mockTransactions: Transaction[] = [
     amount: 1.2,
     date: '2024-01-14',
     status: 'completed',
-    counterparty: '0x8765...4321'
+    counterparty: '0x8765...4321',
+    txHash: '0xabcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890'
   },
   {
     id: '3',
@@ -62,6 +48,25 @@ const mockTransactions: Transaction[] = [
     date: '2024-01-13',
     status: 'pending',
     counterparty: '0x9876...5432'
+  },
+  {
+    id: '4',
+    type: 'sale',
+    dataSetTitle: 'IoT Sensor Data Collection',
+    amount: 0.3,
+    date: '2024-01-12',
+    status: 'completed',
+    counterparty: '0x5432...8765',
+    txHash: '0x9876543210fedcba9876543210fedcba9876543210fedcba9876543210fedcba'
+  },
+  {
+    id: '5',
+    type: 'purchase',
+    dataSetTitle: 'Social Media Sentiment Analysis',
+    amount: 0.6,
+    date: '2024-01-11',
+    status: 'failed',
+    counterparty: '0x6543...9876'
   }
 ]
 
@@ -157,10 +162,10 @@ export default function DashboardPage() {
         />
         <div className="pt-20 pb-8">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center py-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Connect Your Wallet</h2>
-              <p className="text-gray-600 mb-8">Please connect your wallet to access your dashboard</p>
-              <button onClick={handleConnect} className="btn-primary">
+            <div className="text-center py-12 fade-in">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4 slide-up">Connect Your Wallet</h2>
+              <p className="text-gray-600 mb-8 slide-up delay-100">Please connect your wallet to access your dashboard</p>
+              <button onClick={handleConnect} className="btn-primary hover-lift pulse delay-200">
                 Connect Wallet
               </button>
             </div>
@@ -181,17 +186,17 @@ export default function DashboardPage() {
 
       <div className="pt-20 pb-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Dashboard</h1>
-            <p className="text-gray-600">Manage your data assets and transactions</p>
+          <div className="mb-8 fade-in">
+            <h1 className="text-3xl font-bold text-gray-900 mb-2 slide-up">Dashboard</h1>
+            <p className="text-gray-600 slide-up delay-100">Manage your data assets and transactions</p>
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8 fade-in delay-200">
             {stats.map((stat, index) => (
-              <div key={index} className="card">
+              <div key={index} className="card hover-lift scale-in" style={{ animationDelay: `${(index + 1) * 100}ms` }}>
                 <div className="flex items-center">
-                  <div className={`p-2 rounded-lg bg-gray-100 ${stat.color}`}>
+                  <div className={`p-2 rounded-lg bg-gray-100 ${stat.color} pulse`}>
                     <stat.icon className="w-6 h-6" />
                   </div>
                   <div className="ml-4">
@@ -204,7 +209,7 @@ export default function DashboardPage() {
           </div>
 
           {/* Tabs */}
-          <div className="bg-white rounded-lg shadow-sm border border-gray-200 mb-8">
+          <div className="bg-white rounded-lg shadow-sm border border-gray-200 mb-8 fade-in delay-300">
             <div className="border-b border-gray-200">
               <nav className="flex space-x-8 px-6">
                 {[
@@ -212,15 +217,16 @@ export default function DashboardPage() {
                   { id: 'purchases', label: 'My Purchases' },
                   { id: 'sales', label: 'My Sales' },
                   { id: 'settings', label: 'Settings' }
-                ].map((tab) => (
+                ].map((tab, index) => (
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id as any)}
-                    className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                    className={`py-4 px-1 border-b-2 font-medium text-sm hover-lift ${
                       activeTab === tab.id
                         ? 'border-primary-500 text-primary-600'
                         : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                     }`}
+                    style={{ animationDelay: `${(index + 4) * 100}ms` }}
                   >
                     {tab.label}
                   </button>
@@ -232,38 +238,24 @@ export default function DashboardPage() {
               {activeTab === 'overview' && (
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Transactions</h3>
-                    <div className="space-y-3">
-                      {mockTransactions.slice(0, 5).map((transaction) => (
-                        <div key={transaction.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                          <div className="flex items-center space-x-3">
-                            {getStatusIcon(transaction.status)}
-                            <div>
-                              <p className="font-medium text-gray-900">{transaction.dataSetTitle}</p>
-                              <p className="text-sm text-gray-500">
-                                {transaction.type === 'purchase' ? 'Purchased from' : 'Sold to'} {transaction.counterparty}
-                              </p>
-                            </div>
-                          </div>
-                          <div className="text-right">
-                            <p className={`font-medium ${getStatusColor(transaction.status)}`}>
-                              {transaction.amount} ETH
-                            </p>
-                            <p className="text-sm text-gray-500">{transaction.date}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-4 slide-in-left">Recent Transactions</h3>
+                    <TransactionHistory 
+                      transactions={mockTransactions.slice(0, 5)} 
+                      onTransactionClick={(transaction) => {
+                        console.log('Transaction clicked:', transaction)
+                        // Could open a modal with transaction details
+                      }}
+                    />
                   </div>
 
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-4">My Data Sets</h3>
+                    <h3 className="text-lg font-semibold text-gray-900 mb-4 slide-in-right">My Data Sets</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      {mockMyDataSets.map((dataSet) => (
-                        <div key={dataSet.id} className="card">
+                      {mockMyDataSets.map((dataSet, index) => (
+                        <div key={dataSet.id} className="card hover-lift scale-in" style={{ animationDelay: `${(index + 1) * 200}ms` }}>
                           <div className="flex items-start justify-between mb-2">
                             <h4 className="font-semibold text-gray-900">{dataSet.title}</h4>
-                            <span className={`px-2 py-1 text-xs rounded-full ${
+                            <span className={`px-2 py-1 text-xs rounded-full pulse ${
                               dataSet.status === 'active' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'
                             }`}>
                               {dataSet.status}
@@ -271,8 +263,8 @@ export default function DashboardPage() {
                           </div>
                           <p className="text-sm text-gray-600 mb-3">{dataSet.description}</p>
                           <div className="flex items-center justify-between text-sm">
-                            <span className="text-gray-500">{dataSet.downloads} downloads</span>
-                            <span className="font-medium text-gray-900">{dataSet.earnings} ETH earned</span>
+                            <span className="text-gray-500 hover-lift">{dataSet.downloads} downloads</span>
+                            <span className="font-medium text-gray-900 hover-lift">{dataSet.earnings} ETH earned</span>
                           </div>
                         </div>
                       ))}
@@ -283,63 +275,31 @@ export default function DashboardPage() {
 
               {activeTab === 'purchases' && (
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Purchase History</h3>
-                  <div className="space-y-3">
-                    {mockTransactions.filter(t => t.type === 'purchase').map((transaction) => (
-                      <div key={transaction.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                        <div className="flex items-center space-x-3">
-                          {getStatusIcon(transaction.status)}
-                          <div>
-                            <p className="font-medium text-gray-900">{transaction.dataSetTitle}</p>
-                            <p className="text-sm text-gray-500">Purchased from {transaction.counterparty}</p>
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          <p className={`font-medium ${getStatusColor(transaction.status)}`}>
-                            {transaction.amount} ETH
-                          </p>
-                          <p className="text-sm text-gray-500">{transaction.date}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4 slide-in-left">Purchase History</h3>
+                  <TransactionHistory 
+                    transactions={mockTransactions.filter(t => t.type === 'purchase')}
+                  />
                 </div>
               )}
 
               {activeTab === 'sales' && (
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Sales History</h3>
-                  <div className="space-y-3">
-                    {mockTransactions.filter(t => t.type === 'sale').map((transaction) => (
-                      <div key={transaction.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                        <div className="flex items-center space-x-3">
-                          {getStatusIcon(transaction.status)}
-                          <div>
-                            <p className="font-medium text-gray-900">{transaction.dataSetTitle}</p>
-                            <p className="text-sm text-gray-500">Sold to {transaction.counterparty}</p>
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          <p className={`font-medium ${getStatusColor(transaction.status)}`}>
-                            {transaction.amount} ETH
-                          </p>
-                          <p className="text-sm text-gray-500">{transaction.date}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4 slide-in-left">Sales History</h3>
+                  <TransactionHistory 
+                    transactions={mockTransactions.filter(t => t.type === 'sale')}
+                  />
                 </div>
               )}
 
               {activeTab === 'settings' && (
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Account Settings</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4 slide-in-left">Account Settings</h3>
                   <div className="space-y-4">
-                    <div className="card">
+                    <div className="card hover-lift slide-in-right delay-100">
                       <h4 className="font-medium text-gray-900 mb-2">Wallet Address</h4>
                       <p className="text-sm text-gray-600 font-mono">{walletState.address}</p>
                     </div>
-                    <div className="card">
+                    <div className="card hover-lift slide-in-right delay-200">
                       <h4 className="font-medium text-gray-900 mb-2">Network Settings</h4>
                       <p className="text-sm text-gray-600">Currently connected to Ethereum Mainnet</p>
                     </div>
@@ -352,4 +312,4 @@ export default function DashboardPage() {
       </div>
     </div>
   )
-} 
+}

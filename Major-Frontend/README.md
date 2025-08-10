@@ -1,72 +1,85 @@
 # BlockMarketAI - Decentralized Data Marketplace
 
-A blockchain-powered decentralized marketplace for secure data sharing and tokenization. Users can buy, sell, and trade datasets using smart contracts, ensuring ownership and privacy without intermediaries.
+A blockchain-powered decentralized marketplace for secure data sharing and tokenization. Users can buy, sell, and trade datasets using smart contracts with complete ownership control and privacy.
 
 ## 🚀 Features
 
-- **🔐 Secure Data Transactions** – End-to-end encryption and blockchain-based verification
-- **💰 Tokenized Data Exchange** – Trade data assets via smart contracts
-- **🌍 Decentralized Network** – No central authority; data is stored securely across nodes
-- **📊 User-Friendly Dashboard** – Intuitive interface to browse, list, and purchase datasets
-- **🏦 Crypto Payments** – Integrated with MetaMask for seamless transactions
-- **📱 Responsive Design** – Works perfectly on desktop, tablet, and mobile devices
+### Core Functionality
+- **🔐 Secure Wallet Integration** - MetaMask integration with ethers.js
+- **💰 Data Tokenization** - Trade data assets via smart contracts
+- **🌐 Decentralized Network** - No central authority, distributed data storage
+- **📊 Advanced Marketplace** - Search, filter, and sort datasets
+- **📤 Upload System** - Easy dataset listing with metadata
+- **📈 Analytics Dashboard** - Track purchases, sales, and earnings
+- **🎨 Modern UI/UX** - Responsive design with Tailwind CSS
+
+### Technical Features
+- **Smart Contract Integration** - Ethereum-based marketplace contracts
+- **Real-time Search** - Search by title, description, and tags
+- **Advanced Filtering** - Filter by category, price, and rating
+- **Sorting Options** - Sort by date, price, rating, or downloads
+- **Transaction History** - Complete purchase and sale tracking
+- **User Profiles** - Wallet-based user management
 
 ## 🛠️ Tech Stack
 
 ### Frontend
-- **React.js** - Modern UI library
-- **Next.js** - Full-stack React framework with SSR
-- **TypeScript** - Type-safe JavaScript
+- **Next.js 15** - React framework with App Router
+- **TypeScript** - Type-safe development
 - **Tailwind CSS** - Utility-first CSS framework
 - **Lucide React** - Beautiful icons
+- **React Hot Toast** - Toast notifications
 
-### Blockchain & Web3
-- **Ethers.js** - Ethereum library for interacting with smart contracts
-- **MetaMask** - Wallet integration for secure transactions
-- **Solidity** - Smart contract development (planned)
+### Blockchain
+- **Ethers.js 6** - Ethereum library
+- **MetaMask** - Wallet integration
+- **Solidity** - Smart contracts (mock implementation)
 
-### Development Tools
+### Development
 - **ESLint** - Code linting
 - **PostCSS** - CSS processing
-- **Autoprefixer** - CSS vendor prefixing
+- **Autoprefixer** - CSS vendor prefixes
 
 ## 📁 Project Structure
 
 ```
 my-marketplace/
 ├── src/
-│   ├── app/                 # Next.js app router pages
-│   │   ├── globals.css     # Global styles
-│   │   ├── layout.tsx      # Root layout
-│   │   ├── page.tsx        # Homepage
-│   │   ├── marketplace/    # Marketplace page
-│   │   ├── dashboard/      # User dashboard
-│   │   └── about/          # About page
-│   ├── components/         # Reusable React components
-│   │   └── Navigation.tsx  # Main navigation component
-│   ├── lib/               # Utility functions and libraries
-│   │   └── wallet.ts      # MetaMask wallet integration
-│   └── types/             # TypeScript type definitions
-├── public/                # Static assets
-├── package.json           # Dependencies and scripts
-├── tailwind.config.js     # Tailwind CSS configuration
-├── tsconfig.json          # TypeScript configuration
-└── README.md             # Project documentation
+│   ├── app/                    # Next.js App Router pages
+│   │   ├── page.tsx           # Homepage
+│   │   ├── marketplace/       # Marketplace page
+│   │   ├── dashboard/         # User dashboard
+│   │   ├── about/             # About page
+│   │   ├── layout.tsx         # Root layout
+│   │   └── globals.css        # Global styles
+│   ├── components/            # Reusable components
+│   │   ├── Navigation.tsx     # Navigation bar
+│   │   ├── DataSetCard.tsx    # Dataset display card
+│   │   ├── MarketplaceFilters.tsx # Search and filter
+│   │   └── UploadDataSet.tsx  # Dataset upload modal
+│   ├── lib/                   # Utility libraries
+│   │   ├── wallet.ts          # Wallet management
+│   │   └── contracts.ts       # Smart contract integration
+│   └── types/                 # TypeScript type definitions
+│       └── index.ts           # Shared types
+├── public/                    # Static assets
+├── package.json               # Dependencies
+├── tailwind.config.js         # Tailwind configuration
+└── README.md                  # Project documentation
 ```
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-
 - Node.js 18+ 
-- npm or yarn
 - MetaMask browser extension
+- Git
 
 ### Installation
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/your-username/my-marketplace.git
    cd my-marketplace
    ```
 
@@ -85,99 +98,126 @@ my-marketplace/
 
 ### Environment Setup
 
-1. **Install MetaMask**
-   - Download and install the [MetaMask browser extension](https://metamask.io/)
-   - Create a new wallet or import an existing one
-   - Add some test ETH to your wallet (use a testnet like Sepolia)
+Create a `.env.local` file in the root directory:
 
-2. **Connect to the Marketplace**
-   - Click "Connect Wallet" in the navigation
-   - Approve the connection in MetaMask
-   - You're ready to start trading data!
+```env
+NEXT_PUBLIC_CONTRACT_ADDRESS=0x1234567890123456789012345678901234567890
+NEXT_PUBLIC_NETWORK_ID=1
+NEXT_PUBLIC_NETWORK_NAME=Ethereum Mainnet
+```
 
-## 📱 Usage
+## 📖 Usage Guide
 
-### For Data Buyers
+### Connecting Wallet
+1. Click "Connect Wallet" in the navigation
+2. Approve MetaMask connection
+3. Your wallet address will be displayed
 
-1. **Browse the Marketplace**
-   - Visit the marketplace page to see available datasets
-   - Use search and filters to find specific data
-   - View dataset details, ratings, and pricing
+### Browsing Datasets
+1. Navigate to the Marketplace page
+2. Use the search bar to find specific datasets
+3. Apply filters by category, price, or rating
+4. Sort results by different criteria
 
-2. **Purchase Data**
-   - Connect your MetaMask wallet
-   - Click "Purchase" on any dataset
-   - Confirm the transaction in MetaMask
-   - Download your purchased data
+### Purchasing Datasets
+1. Find a dataset you want to purchase
+2. Click the "Purchase" button
+3. Confirm the transaction in MetaMask
+4. Wait for blockchain confirmation
 
-### For Data Sellers
+### Uploading Datasets
+1. Click "Upload Dataset" in the marketplace
+2. Fill in the required information:
+   - Title and description
+   - Price in ETH
+   - Category and tags
+   - File size
+3. Submit the form
+4. Confirm the transaction in MetaMask
 
-1. **List Your Data**
-   - Connect your MetaMask wallet
-   - Navigate to the dashboard
-   - Upload and describe your dataset
-   - Set pricing and access controls
-
-2. **Manage Sales**
-   - Track your sales and earnings
-   - View buyer analytics
-   - Manage your listings
+### Managing Your Account
+1. Navigate to the Dashboard
+2. View your transaction history
+3. Track your earnings and purchases
+4. Manage your listed datasets
 
 ## 🔧 Development
 
 ### Available Scripts
 
 ```bash
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
-
-# Start production server
-npm start
-
-# Run linting
-npm run lint
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run start        # Start production server
+npm run lint         # Run ESLint
 ```
 
 ### Code Structure
 
-- **Components**: Reusable UI components in `src/components/`
-- **Pages**: Route pages in `src/app/`
-- **Utilities**: Helper functions in `src/lib/`
-- **Types**: TypeScript definitions in `src/types/`
+#### Components
+- **Navigation.tsx** - Main navigation with wallet integration
+- **DataSetCard.tsx** - Reusable dataset display component
+- **MarketplaceFilters.tsx** - Advanced filtering and sorting
+- **UploadDataSet.tsx** - Modal for dataset upload
+
+#### Libraries
+- **wallet.ts** - MetaMask wallet management
+- **contracts.ts** - Smart contract interactions
+
+#### Types
+- **index.ts** - TypeScript interfaces for data structures
 
 ### Adding New Features
 
-1. **Create new pages** in `src/app/`
-2. **Add components** in `src/components/`
-3. **Update navigation** in `Navigation.tsx`
-4. **Add types** as needed in `src/types/`
+1. **Create new components** in `src/components/`
+2. **Add types** to `src/types/index.ts`
+3. **Update pages** in `src/app/`
+4. **Test thoroughly** with MetaMask
 
-## 🔒 Security Features
+## 🧪 Testing
 
-- **MetaMask Integration**: Secure wallet connection
-- **Smart Contract Verification**: All transactions verified on blockchain
-- **End-to-End Encryption**: Data remains private during transactions
-- **Decentralized Storage**: No single point of failure
+### Manual Testing Checklist
+- [ ] Wallet connection/disconnection
+- [ ] Dataset search and filtering
+- [ ] Dataset purchase flow
+- [ ] Dataset upload process
+- [ ] Dashboard functionality
+- [ ] Responsive design on mobile
 
-## 🎨 Design System
+### Browser Compatibility
+- Chrome (recommended with MetaMask)
+- Firefox
+- Safari
+- Edge
 
-The project uses a consistent design system with:
+## 🚀 Deployment
 
-- **Primary Colors**: Blue gradient (`primary-600`, `primary-700`)
-- **Secondary Colors**: Gray scale for text and backgrounds
-- **Components**: Pre-styled buttons, cards, and form elements
-- **Icons**: Lucide React icon library
-- **Typography**: Inter font family
+### Vercel (Recommended)
+1. Push code to GitHub
+2. Connect repository to Vercel
+3. Deploy automatically
 
-## 📊 Performance
+### Other Platforms
+- Netlify
+- AWS Amplify
+- DigitalOcean App Platform
 
-- **Server-Side Rendering**: Fast initial page loads
-- **Code Splitting**: Automatic route-based code splitting
-- **Image Optimization**: Next.js automatic image optimization
-- **Caching**: Efficient caching strategies
+## 🔒 Security Considerations
+
+### Smart Contract Security
+- All transactions require user confirmation
+- Price validation on purchase
+- Access control for dataset management
+
+### Frontend Security
+- Input validation on all forms
+- XSS protection with React
+- Secure wallet integration
+
+### Data Privacy
+- No personal data stored on blockchain
+- Encrypted data transmission
+- User-controlled data sharing
 
 ## 🤝 Contributing
 
@@ -187,37 +227,38 @@ The project uses a consistent design system with:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
+### Development Guidelines
+- Follow TypeScript best practices
+- Use Tailwind CSS for styling
+- Write meaningful commit messages
+- Test all new features thoroughly
+
 ## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 👥 Team
 
-- **Shreyansh Shukla** - Team Leader - Full Stack & Blockchain
+- **Shreyansh Shukla** - Team Leader & Full Stack Developer
 - **Akash Singh** - Authentication & User Flow
 - **Purushottam Pandey** - Dashboard & Data Management
 - **Shivansh Mishra** - UI/UX & Responsive Design
 - **Harshit Dwivedi** - Routing & Frontend Components
 
-## 🆘 Support
+## 🙏 Acknowledgments
 
-If you encounter any issues or have questions:
+- [Next.js](https://nextjs.org/) for the amazing React framework
+- [Tailwind CSS](https://tailwindcss.com/) for the utility-first CSS
+- [Ethers.js](https://docs.ethers.io/) for Ethereum integration
+- [MetaMask](https://metamask.io/) for wallet functionality
+- [Lucide](https://lucide.dev/) for beautiful icons
 
-1. Check the [Issues](https://github.com/your-repo/issues) page
-2. Create a new issue with detailed information
-3. Contact the development team
+## 📞 Support
 
-## 🔮 Roadmap
-
-- [ ] Smart contract integration
-- [ ] Advanced search and filtering
-- [ ] Data preview functionality
-- [ ] User reviews and ratings
-- [ ] Advanced analytics dashboard
-- [ ] Mobile app development
-- [ ] API documentation
-- [ ] Multi-chain support
+For support, email support@blockmarketai.com or create an issue in this repository.
 
 ---
 
-**Built with ❤️ by the BlockMarketAI Team** 
+**Built with ❤️ by Team Shreytan**
+
+*The future of decentralized data trading starts here.* 
