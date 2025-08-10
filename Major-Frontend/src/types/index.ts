@@ -10,7 +10,7 @@ export interface DataSet {
   title: string
   description: string
   price: number
-  category: string
+  category?: string
   rating: number
   earnings?: number; // or the correct type
   downloads: number
