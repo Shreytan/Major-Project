@@ -7,6 +7,6 @@ context = "Major-Backend"
 [deploy]
 startCommand = "npm start"
 healthcheckPath = "/health"
-healthcheckTimeout = 100
+healthcheckTimeout = 300           # ← Increased from 100 to 300 seconds
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 10

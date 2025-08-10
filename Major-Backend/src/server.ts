@@ -16,11 +16,12 @@ async function startServer() {
     await connectDatabase();
     console.log('✅ Database connected successfully');
 
-    app.listen(PORT, () => {
-      console.log(`🚀 Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
-      console.log(`🔗 Health check: https://<your-railway-domain>/health`);
-      console.log(`📡 API Base URL: https://<your-railway-domain>${process.env.API_PREFIX || '/api/v1'}`);
-    });
+   app.listen(PORT, '0.0.0.0', () => {
+  console.log(`🚀 Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
+  console.log(`🔗 Health check available at /health`);
+  console.log(`📡 API Base URL: ${process.env.API_PREFIX || '/api/v1'}`);
+});
+
   } catch (error) {
     console.error('❌ Failed to start server:', error);
     process.exit(1);
