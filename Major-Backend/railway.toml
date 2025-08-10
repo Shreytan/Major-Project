@@ -1,8 +1,11 @@
 [build]
 builder = "NIXPACKS"
+buildCommand = "npm ci && npm run build"
+startCommand = "npm start"
+context = "Major-Backend"
 
 [deploy]
-startCommand = "npm run start"
+startCommand = "npm start"
 healthcheckPath = "/health"
 healthcheckTimeout = 100
 restartPolicyType = "ON_FAILURE"
