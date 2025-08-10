@@ -1,20 +1,25 @@
+// src/server.ts
+
 import app from './app';
 import { connectDatabase } from '@/config/database';
+import dotenv from 'dotenv';
 
-const PORT = process.env.PORT || 5000;
+dotenv.config();
+if (process.env.NODE_ENV === 'production') {
+  dotenv.config({ path: '.env.production' });
+}
+
+const PORT = Number(process.env.PORT) || 5000;
 
 async function startServer() {
   try {
-    // Connect to database
     await connectDatabase();
     console.log('✅ Database connected successfully');
 
-    // Start server
     app.listen(PORT, () => {
-      console.log(`🚀 Server running on port ${PORT}`);
-      console.log(`📊 Environment: ${process.env.NODE_ENV}`);
-      console.log(`🔗 Health check: http://localhost:${PORT}/health`);
-      console.log(`📡 API Base URL: http://localhost:${PORT}${process.env.API_PREFIX || '/api/v1'}`);
+      console.log(`🚀 Server running in ${process.env.NODE_ENV || 'development'} mode on port ${PORT}`);
+      console.log(`🔗 Health check: https://<your-railway-domain>/health`);
+      console.log(`📡 API Base URL: https://<your-railway-domain>${process.env.API_PREFIX || '/api/v1'}`);
     });
   } catch (error) {
     console.error('❌ Failed to start server:', error);
