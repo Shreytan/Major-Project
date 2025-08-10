@@ -10,17 +10,15 @@ export interface DataSet {
   title: string
   description: string
   price: number
-  category?: string
-  rating: number
-  earnings?: number; // or the correct type
   downloads: number
-  status : string
-  views: number
-  seller: string
-  createdAt: string
-  fileSize: string
-  tags: string[]
-  previewUrl?: string
+  earnings?: number
+  status: string
+  category?: string
+  rating?: number
+  views?: number
+  seller?: string
+  createdAt?: string
+  updatedAt?: string
 }
 
 export interface Transaction {
