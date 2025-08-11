@@ -21,6 +21,11 @@ export interface DataSet {
   previewUrl?: string
 }
 
+export interface UserDataSet extends DataSet {
+  earnings: number
+  status: 'active' | 'inactive' | 'pending'
+}
+
 export interface Transaction {
   id: string
   type: 'purchase' | 'sale'

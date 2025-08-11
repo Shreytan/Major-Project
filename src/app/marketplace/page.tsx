@@ -218,7 +218,7 @@ export default function MarketplacePage() {
         isConnected={walletState.isConnected}
         onConnect={handleConnect}
         onDisconnect={handleDisconnect}
-        userAddress={walletState.address}
+        userAddress={walletState.address || undefined}
       />
 
       <div className="pt-20 pb-8">

@@ -19,8 +19,8 @@ interface AuthContextType {
   resetPassword: (email: string) => Promise<void>
   verifyResetToken: (token: string) => Promise<boolean>
   confirmPasswordReset: (token: string, newPassword: string) => Promise<void>
-  connectWallet: () => Promise<void>
-  disconnectWallet: () => void
+  connectWallet: () => Promise<WalletState>
+  disconnectWallet: () => Promise<WalletState>
   updateProfile: (data: Partial<UserProfile>) => Promise<void>
 }
 
@@ -261,7 +261,7 @@ export function AuthProvider({ children, walletManager }: AuthProviderProps) {
       
       // If user is authenticated, update their wallet address
       if (isAuthenticated && user) {
-        const updatedUser = { ...user, address: null }
+        const updatedUser = { ...user, address: '' }
         setUser(updatedUser)
         localStorage.setItem('user', JSON.stringify(updatedUser))
       }

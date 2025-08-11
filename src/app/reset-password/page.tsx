@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, Suspense } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import ResetPassword from '@/components/auth/ResetPassword'
@@ -34,7 +34,9 @@ export default function ResetPasswordPage() {
       </div>
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <ResetPassword />
+        <Suspense fallback={<div className="text-center">Loading...</div>}>
+          <ResetPassword />
+        </Suspense>
       </div>
     </div>
   )

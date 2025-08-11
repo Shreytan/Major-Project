@@ -1,0 +1,13 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/about/page": "/about",
+  "/forgot-password/page": "/forgot-password",
+  "/connect-wallet/page": "/connect-wallet",
+  "/login/page": "/login",
+  "/dashboard/page": "/dashboard",
+  "/page": "/",
+  "/marketplace/page": "/marketplace",
+  "/signup/page": "/signup",
+  "/reset-password/page": "/reset-password",
+  "/profile/page": "/profile"
+}

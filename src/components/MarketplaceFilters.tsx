@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { Filter, SortAsc, SortDesc, X } from 'lucide-react'
-import { MarketplaceFilters } from '@/types'
+import type { MarketplaceFilters } from '@/types'
 
 interface MarketplaceFiltersProps {
   filters: MarketplaceFilters

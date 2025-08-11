@@ -22,7 +22,7 @@ export class WalletManager {
       }
 
       // Request account access
-      const accounts = await ethereum.request({ method: 'eth_requestAccounts' })
+      const accounts = await (ethereum as any).request({ method: 'eth_requestAccounts' })
       
       if (!accounts || accounts.length === 0) {
         throw new Error('No accounts found!')
@@ -31,7 +31,7 @@ export class WalletManager {
       const account = accounts[0] as string
 
       // Create provider and signer
-      this.provider = new ethers.BrowserProvider(ethereum)
+      this.provider = new ethers.BrowserProvider(ethereum as any)
       this.signer = await this.provider.getSigner()
 
       return {

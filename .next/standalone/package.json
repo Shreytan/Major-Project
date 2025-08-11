@@ -1,0 +1,44 @@
+{
+  "name": "decentralized-data-marketplace",
+  "version": "1.0.0",
+  "description": "A blockchain-powered decentralized marketplace for secure data sharing and tokenization",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "keywords": [
+    "blockchain",
+    "marketplace",
+    "data",
+    "ethereum",
+    "web3"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@metamask/detect-provider": "^2.0.0",
+    "axios": "^1.6.0",
+    "clsx": "^2.0.0",
+    "ethers": "^6.8.0",
+    "lucide-react": "^0.539.0",
+    "next": "^15.4.5",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-hot-toast": "^2.4.1",
+    "tailwind-merge": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-config-next": "^15.4.5",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5",
+    "typescript": "^5.2.2"
+  }
+}

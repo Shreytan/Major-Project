@@ -13,7 +13,7 @@ import {
   Settings
 } from 'lucide-react'
 import { walletManager, WalletState } from '@/lib/wallet'
-import { Transaction, DataSet } from '@/types'
+import { Transaction, DataSet, UserDataSet } from '@/types'
 import TransactionHistory from '@/components/TransactionHistory'
 import toast from 'react-hot-toast'
 
@@ -70,13 +70,20 @@ const mockTransactions: Transaction[] = [
   }
 ]
 
-const mockMyDataSets: DataSet[] = [
+const mockMyDataSets: UserDataSet[] = [
   {
     id: '1',
     title: 'Healthcare Patient Records',
     description: 'Anonymized patient records dataset for medical research.',
     price: 1.2,
+    category: 'Healthcare',
+    rating: 4.8,
     downloads: 892,
+    views: 1250,
+    seller: 'User123',
+    createdAt: '2024-01-15',
+    fileSize: '2.5 GB',
+    tags: ['healthcare', 'medical', 'research'],
     earnings: 1.2,
     status: 'active'
   },
@@ -85,7 +92,14 @@ const mockMyDataSets: DataSet[] = [
     title: 'IoT Sensor Data Collection',
     description: 'Sensor data from various IoT devices.',
     price: 0.6,
+    category: 'Technology',
+    rating: 4.5,
     downloads: 756,
+    views: 980,
+    seller: 'User123',
+    createdAt: '2024-02-20',
+    fileSize: '1.8 GB',
+    tags: ['iot', 'sensors', 'technology'],
     earnings: 0.6,
     status: 'active'
   }
