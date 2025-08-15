@@ -1,0 +1,14 @@
+{
+<<<<<<< HEAD:Major-Frontend/.next/server/app-paths-manifest.json
+  "/login/page": "app/login/page.js",
+  "/marketplace/page": "app/marketplace/page.js",
+  "/page": "app/page.js",
+  "/about/page": "app/about/page.js"
+=======
+  "/page": "app/page.js",
+  "/login/page": "app/login/page.js",
+  "/signup/page": "app/signup/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/forgot-password/page": "app/forgot-password/page.js"
+>>>>>>> ecef4e6791da9a7e643a6c1cebbeb652e8a15558:.next/server/app-paths-manifest.json
+}

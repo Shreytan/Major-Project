@@ -1,0 +1,17 @@
+{
+  "version": 4,
+  "routes": {},
+  "dynamicRoutes": {},
+  "notFoundRoutes": [],
+  "preview": {
+<<<<<<< HEAD:Major-Frontend/.next/prerender-manifest.json
+    "previewModeId": "bfe4e2cfe9594d3dfe4274f4a91051cb",
+    "previewModeSigningKey": "a4962ea40cb9f31902afb4254401a8821996e3a050a3bdf90492c9155a9436c5",
+    "previewModeEncryptionKey": "ccb497fa3171a64a4585904549abf199c0f5ae600e87848dad58a3619512931d"
+=======
+    "previewModeId": "38c0a6d5c3c82fb0537a065de8fd1d33",
+    "previewModeSigningKey": "2b3b4805080834d6e08f3e94f5ecc55ce21c4f46076929add95eb0bf28307db8",
+    "previewModeEncryptionKey": "fdd6ed285e7159c27e38aab50ec63eaf1ff318fbb46250e3c3214347b1c077b8"
+>>>>>>> ecef4e6791da9a7e643a6c1cebbeb652e8a15558:.next/prerender-manifest.json
+  }
+}

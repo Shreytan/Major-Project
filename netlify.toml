@@ -1,0 +1,15 @@
+# Major-Frontend/netlify.toml
+
+[build]
+  # Base directory for Netlify: your frontend root in this case
+  base = "."
+  # Install dependencies and build React app
+  command = "npm ci && npm run build"
+  # Directory where the build output lives for serving
+  publish = "build"
+
+# Redirect all requests to index.html (for React Router SPA support)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
