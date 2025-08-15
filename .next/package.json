@@ -1,1 +1,2 @@
-{"type": "commonjs"}
+{"type": "commonjs",
+"build": "nom run build"}
