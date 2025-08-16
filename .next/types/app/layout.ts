@@ -1,4 +1,8 @@
+<<<<<<< HEAD:Major-Frontend/.next/types/app/layout.ts
+// File: C:\Users\91860\Downloads\Major-Project\Major-Frontend\src\app\layout.tsx
+=======
 // File: C:\Users\aakas\OneDrive\Desktop\my-marketplace\src\app\layout.tsx
+>>>>>>> ecef4e6791da9a7e643a6c1cebbeb652e8a15558:.next/types/app/layout.ts
 import * as entry from '../../../src/app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

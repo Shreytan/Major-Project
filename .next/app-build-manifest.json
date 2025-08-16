@@ -11,11 +11,25 @@
       "static/chunks/main-app.js",
       "static/chunks/app/page.js"
     ],
+<<<<<<< HEAD:Major-Frontend/.next/app-build-manifest.json
+    "/marketplace/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/marketplace/page.js"
+    ],
+=======
+>>>>>>> ecef4e6791da9a7e643a6c1cebbeb652e8a15558:.next/app-build-manifest.json
     "/login/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/login/page.js"
     ],
+<<<<<<< HEAD:Major-Frontend/.next/app-build-manifest.json
+    "/about/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/about/page.js"
+=======
     "/signup/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -30,6 +44,7 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/forgot-password/page.js"
+>>>>>>> ecef4e6791da9a7e643a6c1cebbeb652e8a15558:.next/app-build-manifest.json
     ]
   }
 }
