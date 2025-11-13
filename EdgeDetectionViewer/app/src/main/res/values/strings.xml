@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Edge Detection Viewer</string>
+    <string name="toggle_mode">Toggle Mode</string>
+    <string name="raw_feed">Raw Feed</string>
+    <string name="edge_detected">Edge Detected</string>
+    <string name="fps_label">FPS: %1$d</string>
+    <string name="processing_time">Processing: %1$d ms</string>
+    <string name="camera_permission_required">Camera permission is required</string>
+    <string name="grant_permission">Grant Permission</string>
+</resources>

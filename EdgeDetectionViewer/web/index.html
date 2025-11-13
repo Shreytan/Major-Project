@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edge Detection Viewer - Web Interface</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎨 Edge Detection Viewer</h1>
+            <p class="subtitle">Real-time OpenCV Processing Monitor</p>
+        </header>
+
+        <main>
+            <div class="viewer-section">
+                <div class="image-container">
+                    <canvas id="frameCanvas"></canvas>
+                    <div class="overlay-stats" id="overlayStats">
+                        <div class="stat-item">
+                            <span class="stat-label">FPS:</span>
+                            <span class="stat-value" id="fpsValue">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Resolution:</span>
+                            <span class="stat-value" id="resolutionValue">0x0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Processing:</span>
+                            <span class="stat-value" id="processingValue">0 ms</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Mode:</span>
+                            <span class="stat-value" id="modeValue">Edge Detection</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <button id="loadSampleBtn" class="btn btn-primary">Load Sample Frame</button>
+                    <button id="toggleModeBtn" class="btn btn-secondary">Toggle Mode</button>
+                    <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                    <button id="uploadBtn" class="btn btn-secondary">Upload Image</button>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h2>📊 Frame Statistics</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Frame Count</h3>
+                        <p class="stat-number" id="frameCount">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Avg Processing Time</h3>
+                        <p class="stat-number" id="avgProcessing">0 ms</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Data Processed</h3>
+                        <p class="stat-number" id="totalData">0 MB</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Status</h3>
+                        <p class="stat-number status-active" id="status">Ready</p>
+                    </div>
+                </div>
+
+                <div class="tech-info">
+                    <h3>🔧 Technology Stack</h3>
+                    <ul>
+                        <li><strong>Frontend:</strong> TypeScript + HTML5 Canvas</li>
+                        <li><strong>Processing:</strong> OpenCV C++ (via JNI)</li>
+                        <li><strong>Rendering:</strong> OpenGL ES 2.0</li>
+                        <li><strong>Platform:</strong> Android NDK</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Built with TypeScript • OpenCV • OpenGL ES</p>
+            <p class="version">Version 1.0.0 | R&D Intern Assessment</p>
+        </footer>
+    </div>
+
+    <script type="module" src="dist/app.js"></script>
+</body>
+</html>
